@@ -1,65 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Tic-Tac-Toe</title>
     <style>
-      /* CSS styles for the game board and pieces */
+        table, th, td {
+            border: 1px solid;
+        }
+        td {
+            height:30px;
+            width: 30px;
+        }
     </style>
-  </head>
-  <body>
-    <table id="board">
-      <tr>
+</head>
+<body>
+
+<table id="board">
+    <tr>
         <td id="0"></td>
         <td id="1"></td>
         <td id="2"></td>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
         <td id="3"></td>
         <td id="4"></td>
         <td id="5"></td>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
         <td id="6"></td>
         <td id="7"></td>
         <td id="8"></td>
-      </tr>
-    </table>
-    <script>
-      const cells = document.querySelectorAll("td");
-let player = "X";
+    </tr>
+</table>
+<script>
+    const cells = document.querySelectorAll("td");
+    let player = "X";
 
-for (const cell of cells) {
-  cell.addEventListener("click", function(e) {
-    if (e.target.textContent === "") {
-      e.target.textContent = player;
-      checkForWinner();
-      player = player === "X" ? "O" : "X";
+    for (const cell of cells) {
+        cell.addEventListener("click", function(e) {
+            if (e.target.textContent === "") {
+                e.target.textContent = player;
+                checkForWinner();
+                player = player === "X" ? "O" : "X";
+            }
+        });
     }
-  });
-}
 
-function checkForWinner() {
-  const winningCombinations = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-  ];
+    function checkForWinner() {
+        const winningCombinations = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
 
-  for (const combination of winningCombinations) {
-    if (
-      cells[combination[0]].textContent === player &&
-      cells[combination[1]].textContent === player &&
-      cells[combination[2]].textContent === player
-    ) {
-      alert(`Player ${player} wins!`);
+        for (const combination of winningCombinations) {
+            if (
+                cells[combination[0]].textContent === player &&
+                cells[combination[1]].textContent === player &&
+                cells[combination[2]].textContent === player
+            ) {
+                alert(`Player ${player} wins!`);
+            }
+        }
     }
-  }
-}
-    </script>
-  </body>
+</script>
+</body>
 </html>
+
